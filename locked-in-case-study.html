@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Locked In. — Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0C0C0D;--bg2:#111113;--card:#18181B;--border:#27272A;
+  --text:#FAFAFA;--muted:#A1A1AA;--dim:#8C8C99;
+  --teal:#4ECDC4;--teal2:#38B8AF;--teal-light:rgba(78,205,196,.08);
+  --navy:#1A0066;
+  --amber:#F59E0B;--amber2:#FCD34D;--amber-bg:rgba(245,158,11,.08);
+  --green:#22C55E;--green-bg:rgba(34,197,94,.08);
+  --red:#EF4444;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(12,12,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-check{width:30px;height:30px;background:var(--navy);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-check svg{width:16px;height:16px}
+.nav-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.04em;color:var(--text)}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-back:hover{color:var(--teal)}
+
+/* HERO */
+.hero{padding:96px 48px 72px;max-width:960px;margin:0 auto;border-bottom:1px solid var(--border)}
+.hero-tag{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--teal);display:inline-block}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,10vw,120px);letter-spacing:.02em;color:var(--text);line-height:.9;margin-bottom:16px}
+.hero h1 span{color:var(--teal)}
+.hero-sub{font-size:18px;color:var(--muted);line-height:1.75;max-width:600px;margin-bottom:40px}
+.hero-meta{display:flex;gap:40px;flex-wrap:wrap}
+.meta-item{}
+.meta-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:5px}
+.meta-value{font-size:14px;font-weight:500;color:var(--text)}
+
+/* STAT STRIP */
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px}
+.stats-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat{}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:.02em;color:var(--teal);line-height:1;margin-bottom:6px}
+.stat-label{font-size:11px;color:var(--muted);font-weight:400;letter-spacing:.04em;text-transform:uppercase}
+
+/* CONTENT */
+.content{max-width:960px;margin:0 auto;padding:0 48px}
+.section{padding:80px 0;border-bottom:1px solid var(--border)}
+.section:last-child{border-bottom:none}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:16px;height:1px;background:var(--teal);display:inline-block}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,6vw,56px);letter-spacing:.03em;color:var(--text);line-height:.95;margin-bottom:24px}
+p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:18px}
+p:last-child{margin-bottom:0}
+p strong{color:var(--text);font-weight:500}
+
+/* PULL QUOTE */
+.pull-quote{border-left:3px solid var(--teal);padding:20px 28px;margin:32px 0;background:var(--teal-light);border-radius:0 8px 8px 0}
+.pull-quote p{font-size:18px;color:var(--text);font-style:italic;line-height:1.65;margin:0}
+.pull-quote cite{display:block;font-size:12px;color:var(--muted);margin-top:12px;font-style:normal;letter-spacing:.04em;text-transform:uppercase}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:32px}
+.two-col-third{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;margin-top:32px}
+
+/* PROBLEM CARDS */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.problem-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:24px;border-left:3px solid var(--amber)}
+.problem-card h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
+.problem-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.65}
+
+/* EVOLUTION TIMELINE */
+.timeline{margin-top:40px;position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:40px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-28px;top:4px;width:16px;height:16px;border-radius:50%;border:2px solid var(--border);background:var(--bg);transition:all .2s}
+.tl-item.active .tl-dot{background:var(--teal);border-color:var(--teal);box-shadow:0 0 0 4px rgba(78,205,196,.15)}
+.tl-date{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tl-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
+.tl-body{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* FLOW DIAGRAM */
+.flow{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.flow-persona{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.flow-persona-hd{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.flow-persona-badge{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0}
+.flow-persona-badge.rec{background:var(--navy);color:#fff}
+.flow-persona-badge.coord{background:var(--teal);color:#1A0066}
+.flow-persona-name{font-size:14px;font-weight:600;color:var(--text)}
+.flow-persona-sub{font-size:12px;color:var(--muted);margin-top:1px}
+.flow-steps{padding:16px 20px;display:flex;flex-direction:column;gap:10px}
+.flow-step{display:flex;align-items:flex-start;gap:12px}
+.flow-step-num{width:22px;height:22px;border-radius:6px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--dim);flex-shrink:0;margin-top:1px}
+.flow-step-text{font-size:13px;color:var(--muted);line-height:1.6}
+.flow-step-text strong{color:var(--text);font-weight:500}
+
+/* TIME TABLE */
+.time-table{margin-top:32px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.tt-head{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;background:var(--navy);padding:12px 20px;gap:16px}
+.tt-head span{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.tt-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:14px 20px;gap:16px;border-top:1px solid var(--border);align-items:center}
+.tt-row:nth-child(odd){background:var(--bg2)}
+.tt-row:nth-child(even){background:var(--card)}
+.tt-row span{font-size:13px;color:var(--muted)}
+.tt-row span:first-child{color:var(--text);font-weight:500}
+.tt-saved{color:var(--green)!important;font-weight:600!important}
+
+/* COMPARISON */
+.comparison{margin-top:32px}
+.cost-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px}
+.cost-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.cost-card.hl{border-color:var(--teal);background:var(--teal-light)}
+.cost-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.cost-num{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:.02em;line-height:1;margin-bottom:6px}
+.cost-num.t{color:var(--teal)}
+.cost-num.d{color:var(--dim)}
+.cost-num.g{color:var(--green)}
+.cost-sub{font-size:12px;color:var(--dim);line-height:1.5}
+
+.feat-table{border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.ft-head{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;background:var(--navy);padding:12px 20px;gap:8px}
+.ft-head span{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);text-align:center}
+.ft-head span:first-child{text-align:left}
+.ft-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;padding:13px 20px;gap:8px;border-top:1px solid var(--border);align-items:center}
+.ft-row:nth-child(odd){background:var(--bg2)}
+.ft-row:nth-child(even){background:var(--card)}
+.ft-row span{font-size:12px;color:var(--muted);text-align:center}
+.ft-row span:first-child{color:var(--text);font-weight:500;text-align:left}
+.ft-yes{color:var(--green)!important;font-weight:600}
+.ft-built{color:var(--teal)!important;font-weight:600}
+.ft-road{color:var(--amber)!important}
+.ft-no{color:var(--dim)!important}
+
+/* ROADMAP */
+.roadmap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.rm-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px}
+.rm-phase{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;padding:3px 10px;border-radius:20px;display:inline-block}
+.rm-phase.live{background:var(--green-bg);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+.rm-phase.soon{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(245,158,11,.2)}
+.rm-phase.future{background:var(--card);color:var(--dim);border:1px solid var(--border)}
+.rm-card h4{font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px}
+.rm-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.65}
+.rm-cost{font-size:12px;font-weight:600;color:var(--teal);margin-top:12px}
+
+/* DEMO STRIP */
+.demo-strip{background:var(--navy);border-radius:14px;padding:48px;text-align:center;margin-top:40px}
+.demo-strip h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);letter-spacing:.03em;color:#fff;margin-bottom:12px}
+.demo-strip p{font-size:15px;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto 28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all .15s;font-family:'DM Sans',sans-serif}
+.btn-teal{background:var(--teal);color:#1A0066}.btn-teal:hover{background:var(--teal2)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2)}.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+
+/* CLOSING */
+.closing-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:32px}
+.cs-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--teal);line-height:1}
+.cs-label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.06em;color:var(--teal)}
+.footer-copy{font-size:12px;color:var(--dim)}
+.footer-link{font-size:13px;color:var(--muted);text-decoration:none;transition:color .15s}
+.footer-link:hover{color:var(--text)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .6s ease forwards;opacity:0}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
+
+@media(max-width:768px){
+  nav,.content,.hero,footer{padding-left:24px;padding-right:24px}
+  .stats{padding:32px 24px}
+  .stats-inner{grid-template-columns:1fr 1fr;gap:24px}
+  .problem-grid,.two-col,.two-col-third,.flow,.cost-grid,.roadmap{grid-template-columns:1fr}
+  .tt-head,.tt-row{grid-template-columns:1.5fr 1fr 1fr;font-size:12px}
+  .ft-head,.ft-row{grid-template-columns:1.5fr 1fr 1fr 1fr;font-size:11px}
+  .ft-head span:nth-child(4),.ft-row span:nth-child(4){display:none}
+  footer{flex-direction:column;align-items:flex-start}
+}
+
+@media print {
+  @page { size: A4; margin: 16mm 18mm; }
+
+  /* Hide nav and interactive elements */
+  nav, .demo-strip, .btn, .hero-tag { display: none !important; }
+
+  /* Force ALL backgrounds and colors to print */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+
+  /* Page breaks */
+  .hero { page-break-after: always; border: none; }
+  .section { page-break-inside: avoid; }
+  .section:nth-child(2) { page-break-after: always; }
+  .section:nth-child(3) { page-break-after: always; }
+  .section:nth-child(4) { page-break-after: always; }
+  .section:nth-child(5) { page-break-after: always; }
+
+  /* Keep grids intact */
+  .flow, .two-col, .two-col-third, .roadmap,
+  .card-grid-2, .cost-grid { page-break-inside: avoid; }
+
+  /* Tighten spacing */
+  .stats { padding: 28px 0; }
+  .section { padding: 48px 0; }
+  .hero { padding: 56px 0 40px; }
+
+  a[href]::after { content: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://aribenezra.com" class="nav-logo">
+    <div class="nav-check">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="nav-name">Locked In.</div>
+  </a>
+  <a href="https://aribenezra.com/locked-in-ux-case-study" class="nav-back">UX Case Study ↗</a>
+  <a href="https://aribenezra.com/#projects" class="nav-back">← Back to portfolio</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag fu d1">Case Study · Talent Operations · 2025–2026</div>
+  <h1 class="fu d2">LOCKED<br><span>IN.</span></h1>
+  <p class="hero-sub fu d3">How a recruiter who lived the problem built the tool to solve it — and why "Booked" had to evolve into something sharper.</p>
+
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">10–20</div><div class="stat-label">Min saved per interview</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Personas. One tool.</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Workflow tasks automated</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Vendors. No contracts.</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- THE PROBLEM -->
+  <div class="section">
+    <div class="eyebrow">The Problem</div>
+    <h2>SCHEDULING IS A FULL-TIME JOB. THAT'S THE PROBLEM.</h2>
+
+    <div class="pull-quote">
+      <p>"I've managed coordinators who spend so much time scheduling that they can't work on anything else. Manual processes don't just slow you down — they own your entire day."</p>
+      <cite>Ari Benezra, Builder</cite>
+    </div>
+
+    <p>Recruiting coordination is one of the most time-intensive roles in talent — and most of that time is spent on logistics, not people work. Calendar checking. Invite building. Chasing availability. Attaching documents. Sending confirmations. For every interview.</p>
+    <p>In small environments especially, coordinators wear every hat. When scheduling consumes their day, everything else — candidate experience improvements, process projects, data work — gets pushed. The backlog grows. The coordinator burns out. The team moves slower than it should.</p>
+    <p>And here's the kicker: <strong>the tools to fix this either don't exist at the right price point, or they're so overbuilt they take longer to configure than the problem they solve.</strong></p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h4>Manual workflows own the day</h4>
+        <p>Calendar checking, invite drafting, document attaching — done by hand, for every interview, every week. There's no time left for anything else.</p>
+      </div>
+      <div class="problem-card">
+        <h4>No visibility for leadership</h4>
+        <p>Without a dashboard or reporting layer, hiring volume is invisible. Leadership can't see coordinator workload until someone raises their hand.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Enterprise tools are overbuilt</h4>
+        <p>GoodTime is built for org-wide deployment and priced accordingly. Most teams need 20% of what it does and can't justify the spend.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Recruiters and coordinators share the wrong tools</h4>
+        <p>Most scheduling tools treat every user the same. But recruiters and coordinators have fundamentally different jobs in the scheduling workflow.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE EVOLUTION -->
+  <div class="section">
+    <div class="eyebrow">The Evolution</div>
+    <h2>FROM BOOKED TO LOCKED IN.</h2>
+    <p>The tool didn't start with this name or this scope. It started with a simpler question: what's the minimum viable version of this that actually saves time?</p>
+
+    <div class="two-col-third">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Version 1 · Early 2025</div>
+          <div class="tl-title">Booked</div>
+          <div class="tl-body">A single-flow intake form replacing ad hoc scheduling. One persona. Four steps. Coordinator dashboard with Today, This Week, All Upcoming views. Automated email confirmation templates. Department and recruiter reporting.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">UX Review · 2026</div>
+          <div class="tl-title">The feedback</div>
+          <div class="tl-body">A UX researcher and coordinator walked through the flow. Clear finding: recruiters and coordinators are doing fundamentally different work. The single-flow model was asking coordinators to act like recruiters and vice versa. The tool needed personas.</div>
+        </div>
+        <div class="tl-item active">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Version 2 · 2026</div>
+          <div class="tl-title">Locked In.</div>
+          <div class="tl-body">Full persona split. Recruiter gets a clean 3-step submission flow — including resume upload with AI auto-fill. Coordinator gets a power view: Jira-style ticket queue, AI availability parsing, per-interview scheduling, dual calendar previews, AI-drafted confirmation emails, dashboard, reports, and a historic archive. Backed by a real-time cloud database with Google authentication. And a name that actually means something.</div>
+        </div>
+      </div>
+      <div>
+        <p>The name change mattered too. "Booked" worked — but it didn't say anything. It sounded like a hotel app. <strong>"Locked In."</strong> is what a recruiter says when an interview is confirmed. It's the moment the work is done. That's what the tool is for.</p>
+        <p style="margin-top:16px">The evolution wasn't just a rebrand. It was a recognition that <strong>a tool built for everyone is built for no one</strong> — and that real operational improvement comes from designing specifically for how each role actually works.</p>
+        <div style="margin-top:32px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:16px">What changed</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--red);font-weight:600;min-width:60px">Before</span><span style="color:var(--muted)">Single linear form for all users</span></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--teal);font-weight:600;min-width:60px">After</span><span style="color:var(--muted)">Recruiter + Coordinator split personas</span></div>
+            <div style="height:1px;background:var(--border);margin:4px 0"></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--red);font-weight:600;min-width:60px">Before</span><span style="color:var(--muted)">One interview per submission</span></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--teal);font-weight:600;min-width:60px">After</span><span style="color:var(--muted)">Loop/panel support — multiple interviews per request</span></div>
+            <div style="height:1px;background:var(--border);margin:4px 0"></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--red);font-weight:600;min-width:60px">Before</span><span style="color:var(--muted)">No queue or ticket system</span></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--teal);font-weight:600;min-width:60px">After</span><span style="color:var(--muted)">Jira-style ticket queue with filters + reschedule flow</span></div>
+            <div style="height:1px;background:var(--border);margin:4px 0"></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--red);font-weight:600;min-width:60px">Before</span><span style="color:var(--muted)">Manual availability parsing from candidate emails</span></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--teal);font-weight:600;min-width:60px">After</span><span style="color:var(--muted)">AI extracts time slots from any natural language text</span></div>
+            <div style="height:1px;background:var(--border);margin:4px 0"></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--red);font-weight:600;min-width:60px">Before</span><span style="color:var(--muted)">Confirmation emails written from scratch</span></div>
+            <div style="display:flex;gap:10px;font-size:13px"><span style="color:var(--teal);font-weight:600;min-width:60px">After</span><span style="color:var(--muted)">AI drafts personalized email — coordinator reviews and sends</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE FLOW -->
+  <div class="section">
+    <div class="eyebrow">The Solution</div>
+    <h2>COORDINATOR-OWNED. FROM DAY ONE.</h2>
+    <p>The core insight: scheduling coordination is a distinct job. It deserves a dedicated tool — one the coordinator actually runs, not one IT configures for them. Locked In. is built for a non-technical coordinator to own completely. Templates, stages, team setup, branding — all manageable without touching code.</p>
+
+    <div class="pull-quote">
+      <p>"The coordinator doesn't need a developer. They need a tool that respects how they already work."</p>
+      <cite>Ari Benezra, Builder</cite>
+    </div>
+
+    <div class="flow">
+      <div class="flow-persona">
+        <div class="flow-persona-hd">
+          <div class="flow-persona-badge rec">R</div>
+          <div>
+            <div class="flow-persona-name">Recruiter</div>
+            <div class="flow-persona-sub">Simple intake. Submit and move on.</div>
+          </div>
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step"><div class="flow-step-num">1</div><div class="flow-step-text"><strong>Candidate & Availability</strong> — Enter candidate info and paste their availability email. The tool parses it.</div></div>
+          <div class="flow-step"><div class="flow-step-num">2</div><div class="flow-step-text"><strong>Build Interviews</strong> — Add one or more interviews. Name each one. Loops, panels, multi-stage onsites in a single request.</div></div>
+          <div class="flow-step"><div class="flow-step-num">3</div><div class="flow-step-text"><strong>Review & Submit</strong> — Confirm everything, submit to the coordinator queue. Done.</div></div>
+        </div>
+      </div>
+
+      <div class="flow-persona">
+        <div class="flow-persona-hd">
+          <div class="flow-persona-badge coord">C</div>
+          <div>
+            <div class="flow-persona-name">Coordinator</div>
+            <div class="flow-persona-sub">Power view. This is your tool.</div>
+          </div>
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step"><div class="flow-step-num">1</div><div class="flow-step-text"><strong>Queue</strong> — Filterable ticket cards. All, Pending, Scheduled. Click to open.</div></div>
+          <div class="flow-step"><div class="flow-step-num">2</div><div class="flow-step-text"><strong>Ticket Detail</strong> — Candidate info, availability, date/time picker per interview, dual calendar previews.</div></div>
+          <div class="flow-step"><div class="flow-step-num">3</div><div class="flow-step-text"><strong>Confirm & Send</strong> — Preview the confirmation email, send invites. Ticket moves to Scheduled.</div></div>
+          <div class="flow-step"><div class="flow-step-num">4</div><div class="flow-step-text"><strong>Dashboard + Reports + Historic</strong> — All interviews, reporting by role and recruiter, auto-archiving.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 1 / PHASE 2 -->
+  <div class="section">
+    <div class="eyebrow">The Roadmap</div>
+    <h2>TWO PHASES. ONE DIRECTION.</h2>
+    <p>Locked In. is built with a clear trajectory. Phase 1 gives the coordinator the right tool. Phase 2 elevates what the coordinator does entirely.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px">
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+        <div style="background:var(--navy);padding:20px 24px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px">Phase 1 — Now</div>
+          <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.1">The Coordinator-Owned Tool</div>
+        </div>
+        <div style="padding:20px 24px">
+          <p>A non-technical coordinator can set up, configure, and run Locked In. for their entire team. No code. No IT department. No vendor onboarding.</p>
+          <p>Recruiters submit. The coordinator executes. Every step — templates, stages, team setup, branding — is theirs to own and adjust.</p>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Ticket queue + reschedule flow</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Customizable email templates</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Team-configurable — no code needed</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Dashboard, reports, historic archive</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Dual calendar previews</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> AI availability parsing — any natural language</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Resume upload + AI auto-fill</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> AI-drafted confirmation emails, editable before send</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Real-time cloud database — Google Auth + Firestore</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Google Calendar integration — resume link embedded in invite</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> Conflict detection — warns coordinator of double-booked interviewers</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--teal);font-size:16px">✓</span> React rebuild — component architecture, production-ready</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+        <div style="background:linear-gradient(135deg,var(--navy) 0%,#2D0099 100%);padding:20px 24px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px">Phase 2 — Roadmap</div>
+          <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.1">The AI Coordinator</div>
+        </div>
+        <div style="padding:20px 24px">
+          <p>The recruiter submits. AI handles the rest — time recommendations, direct email sending, ATS data pull, interview prep suggestions.</p>
+          <p>The coordinator role gets <strong>elevated</strong>. Less logistics. More candidate experience, process improvement, and strategic work.</p>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--amber);font-size:16px">→</span> Gmail API — send directly from the app, no copy-paste</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--amber);font-size:16px">→</span> ATS integration — pull candidate data, eliminate manual entry</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--amber);font-size:16px">→</span> Interview prep suggestions — AI question sets per stage</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)"><span style="color:var(--amber);font-size:16px">→</span> Coordinator elevated, not replaced</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:var(--teal-light);border:1px solid var(--teal-mid);border-radius:10px;padding:20px 24px;text-align:center">
+      <p style="font-size:15px;color:var(--text);font-weight:500;margin:0">"We built the tool. Then we built what elevates the person using it."</p>
+    </div>
+  </div>
+
+  <!-- TIME SAVINGS -->
+  <div class="section">
+    <div class="eyebrow">Impact</div>
+    <h2>TIME SAVINGS PER INTERVIEW</h2>
+    <p>Every step that used to require manual effort is replaced by a structured workflow. Time the coordinator gets back becomes time spent on work that actually matters.</p>
+
+    <div class="time-table">
+      <div class="tt-head"><span>Task</span><span>Before</span><span>With Locked In.</span><span>Saved</span></div>
+      <div class="tt-row"><span>Building & sending calendar invite</span><span>~10 min</span><span>Auto-generated</span><span class="tt-saved">~10 min</span></div>
+      <div class="tt-row"><span>Attaching interview documents</span><span>Per interview</span><span>Built into form</span><span class="tt-saved">~5 min</span></div>
+      <div class="tt-row"><span>Drafting confirmation email</span><span>~5 min</span><span>AI draft + edit + Gmail</span><span class="tt-saved">~5 min</span></div>
+      <div class="tt-row"><span>Coordinating availability</span><span>~15 min back/forth</span><span>Date + time picker</span><span class="tt-saved">~10 min</span></div>
+      <div class="tt-row"><span>Weekly leadership report</span><span>No process</span><span>1-click report</span><span class="tt-saved">~30 min/wk</span></div>
+      <div class="tt-row"><span>Rescheduling a confirmed interview</span><span>Start over manually</span><span>Reschedule flow</span><span class="tt-saved">~15 min</span></div>
+    </div>
+  </div>
+
+
+  <!-- PRICING MODEL -->
+  <div class="section">
+    <div class="eyebrow">How It Works</div>
+    <h2>BUILT FOR TA TEAMS THAT WANT TO OWN THEIR STACK, NOT DEPEND ON ONE.</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:28px">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:12px">Self-Serve</div>
+        <h4 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px">Deploy yourself</h4>
+        <p style="font-size:13px">Technical TA leads who want full control. Fork it, configure it, run it. Documentation included.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--teal);border-radius:12px;padding:24px;background:var(--teal-light)">
+        <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:12px">Managed</div>
+        <h4 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px">We set it up</h4>
+        <p style="font-size:13px">We implement and configure for your team. Your coordinator is up and running — no IT department needed.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:12px">Enterprise</div>
+        <h4 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px">White-label + ATS</h4>
+        <p style="font-size:13px">Full customization, ATS integration, dedicated support. Built around how your org actually works.</p>
+      </div>
+    </div>
+  </div>
+
+    <!-- DEMO -->
+  <div class="demo-strip">
+    <h3>SEE IT IN ACTION</h3>
+    <p>Locked In. is live and pilot-ready. Try the full recruiter → coordinator → scheduled flow in the demo.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="https://aribenezra.com/lockedin-scheduler/" target="_blank" class="btn btn-teal">View Live Demo ↗</a>
+      <a href="https://aribenezra.com" class="btn btn-ghost">← Back to portfolio</a>
+    </div>
+  </div>
+
+  <!-- CLOSING STATS -->
+  <div class="section" style="text-align:center;border-bottom:none">
+    <div class="eyebrow" style="justify-content:center">The bottom line</div>
+    <h2 style="max-width:560px;margin:0 auto 16px">THE FOUNDATION<br>IS ALREADY BUILT.</h2>
+    <p style="max-width:480px;margin:0 auto">Just a TA team that finally owns its infrastructure.</p>
+    <div class="closing-stats">
+      <div><div class="cs-num">10–20 min</div><div class="cs-label">Saved per interview</div></div>
+      <div><div class="cs-num">2</div><div class="cs-label">Personas, 1 tool</div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="https://aribenezra.com" class="footer-name">ARI BENEZRA</a>
+  <a href="https://aribenezra.com/lockedin-scheduler/" target="_blank" class="footer-link">View Live Demo ↗</a>
+  <span class="footer-copy">© 2026 Ari Benezra · Talent Operations Case Study</span>
+</footer>
+
+</body>
+</html>
