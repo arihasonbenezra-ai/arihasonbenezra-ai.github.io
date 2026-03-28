@@ -334,9 +334,9 @@ footer{background:#0D1117;border-top:1px solid #27272A;padding:36px 48px;display
 
   <!-- RIGHT: TECH SIDE — VERSION D -->
   <div class="hero-right fu d2">
-    <div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,10vw,140px);color:#fff;line-height:.9;letter-spacing:.02em">
-        systems<span style="color:#4ECDC4">.</span>
+    <div style="margin-top:60px">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,10vw,120px);color:#fff;line-height:.88;letter-spacing:.02em">
+        sys<br>tems<span style="color:#4ECDC4">.</span>
       </div>
       <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px">
         <div style="display:flex;align-items:center;gap:12px">
@@ -410,13 +410,24 @@ footer{background:#0D1117;border-top:1px solid #27272A;padding:36px 48px;display
       </div>
 
 
+      <div id="proj-card-3" class="project-card" style="cursor:default;filter:blur(5px);pointer-events:none;user-select:none;opacity:.7">
+        <div class="project-card-top">
+          <div style="width:38px;height:38px;background:#1A0066;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(78,205,196,.3)">
+            <svg width="20" height="20" viewBox="0 0 18 18" fill="none"><rect x="2" y="10" width="3" height="6" rx="1" fill="#4ECDC4"/><rect x="7" y="6" width="3" height="10" rx="1" fill="#4ECDC4" opacity=".75"/><rect x="12" y="2" width="3" height="14" rx="1" fill="#4ECDC4" opacity=".45"/></svg>
+          </div>
+        </div>
+        <h3>Signal.</h3>
+        <p>AI-powered talent analytics tool. Drop in any recruiting or HR report and Signal reads it, visualizes it, and helps you tell the story — with smart filters, drill-downs, PDF exports, and an AI chat layer.</p>
+        <div class="project-tags"><span class="ptag">Talent Analytics</span><span class="ptag">AI-Powered</span><span class="ptag">Data Viz</span><span class="ptag">HR Tech</span><span class="ptag">Live</span></div>
+      </div>
+
       <!-- Overlay -->
       <div id="projects-unlock-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10">
         <div style="background:#18181B;border:1px solid #3F3F46;border-radius:14px;padding:28px 32px;text-align:center;max-width:320px;width:100%">
           <div style="width:40px;height:40px;background:#27272A;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="2" stroke="#A1A1AA" stroke-width="1.5"/><path d="M7 9V6a3 3 0 016 0v3" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
-          <div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:6px">2 projects</div>
+          <div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:6px">3 projects</div>
           <div style="font-size:13px;color:#71717A;margin-bottom:20px">Enter the password to unlock</div>
           <div style="display:flex;gap:8px">
             <input type="password" id="proj-password" placeholder="Password" onkeydown="if(event.key==='Enter')unlockProjects()" style="flex:1;background:#0D1117;border:1px solid #3F3F46;border-radius:8px;padding:8px 12px;font-size:13px;color:#fff;outline:none;font-family:inherit"/>
@@ -527,6 +538,7 @@ function unlockProjects() {
   if (pw === '347queens') {
     var overlay = document.getElementById('projects-unlock-overlay');
     var cards = [
+      { id: 'proj-card-3', links: '<div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><a href="https://signal-ppla-pps.vercel.app" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#fff;text-decoration:none;background:var(--amber);padding:6px 14px;border-radius:20px">View Demo ↗</a></div>' },
       { id: 'proj-card-1', links: '<div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><a href="https://aribenezra.com/lockedin-scheduler/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#fff;text-decoration:none;background:var(--amber);padding:6px 14px;border-radius:20px">View Demo ↗</a><a href="https://aribenezra.com/locked-in-case-study" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--amber);text-decoration:none;border:1px solid rgba(245,158,11,.3);padding:6px 14px;border-radius:20px">Business Case Study ↗</a><a href="https://aribenezra.com/locked-in-ux-case-study" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--amber);text-decoration:none;border:1px solid rgba(245,158,11,.3);padding:6px 14px;border-radius:20px">UX Case Study ↗</a></div>' },
       { id: 'proj-card-2', links: '<div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><a href="https://arihasonbenezra-ai.github.io/scout-chat/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#fff;text-decoration:none;background:var(--amber);padding:6px 14px;border-radius:20px">View Demo ↗</a></div>' }
     ];
