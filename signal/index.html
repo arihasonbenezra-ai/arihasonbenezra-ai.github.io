@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal — Talent analytics built for recruiting teams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #ffffff;
+      --dark: #1a2a3a;
+      --accent: #0e7ea8;
+      --tint-blue: #f0f7fa;
+      --mid-blue: #7ec8e3;
+      --cool-gray: #f0f4fa;
+      --text: #1a2233;
+      --muted: #6b7a99;
+      --border: #c0d8e4;
+      --footer-muted: #a8c4e8;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Logo */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--dark);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 3px;
+      padding: 6px 5px 5px;
+      flex-shrink: 0;
+    }
+
+    .logo-mark svg {
+      width: 22px;
+      height: 16px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .logo--footer .logo-text {
+      color: #fff;
+    }
+
+    .logo--footer .logo-mark {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(126, 200, 227, 0.35);
+    }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a:not(.btn-nav) {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:not(.btn-nav):hover {
+      color: var(--text);
+    }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      background: var(--accent);
+      color: #fff !important;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-nav:hover {
+      background: #0c6f94;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #0c6f94;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: min(640px, calc(100vh - 72px));
+      align-items: stretch;
+    }
+
+    .hero-left {
+      padding: 56px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 600px;
+    }
+
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 6px 14px 6px 10px;
+      background: var(--tint-blue);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--dark);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow-pill::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1.hero-title {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: clamp(48px, 6vw, 72px);
+      font-weight: 400;
+      line-height: 1.02;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.65;
+    }
+
+    .stat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .stat-pill {
+      padding: 8px 14px;
+      background: var(--tint-blue);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .hero-right {
+      background: var(--cool-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 40px;
+      overflow: hidden;
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes rise-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bar-grow {
+      from {
+        transform: scaleY(0);
+        transform-origin: bottom center;
+      }
+      to {
+        transform: scaleY(1);
+        transform-origin: bottom center;
+      }
+    }
+
+    .dash-wrap {
+      width: 100%;
+      max-width: 420px;
+      animation: float-card 4s ease-in-out infinite;
+    }
+
+    .dash-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 48px rgba(26, 42, 58, 0.08), 0 8px 16px rgba(26, 42, 58, 0.04);
+      overflow: hidden;
+    }
+
+    .dash-header {
+      background: var(--dark);
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .dash-header .mini-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .dash-header .mini-logo-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 4px;
+    }
+
+    .dash-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid-blue);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dash-body {
+      padding: 20px;
+    }
+
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .dash-stat {
+      background: var(--tint-blue);
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: center;
+      opacity: 0;
+      animation: rise-in 0.55s ease forwards;
+    }
+
+    .dash-stat:nth-child(1) { animation-delay: 0.1s; }
+    .dash-stat:nth-child(2) { animation-delay: 0.25s; }
+    .dash-stat:nth-child(3) { animation-delay: 0.4s; }
+
+    .dash-stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .dash-stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .dash-stat--accent .dash-stat-value {
+      color: var(--accent);
+    }
+
+    .dash-chart {
+      height: 120px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      gap: 12px;
+      padding: 8px 4px 0;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dash-bar {
+      flex: 1;
+      max-width: 48px;
+      background: var(--accent);
+      border-radius: 6px 6px 0 0;
+      min-height: 8px;
+      transform: scaleY(0);
+      transform-origin: bottom center;
+      animation: bar-grow 0.7s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+    }
+
+    .dash-bar:nth-child(1) { height: 32%; animation-delay: 0.5s; }
+    .dash-bar:nth-child(2) { height: 58%; animation-delay: 0.65s; }
+    .dash-bar:nth-child(3) { height: 100%; animation-delay: 0.8s; }
+    .dash-bar:nth-child(4) { height: 72%; animation-delay: 0.95s; }
+    .dash-bar:nth-child(5) { height: 45%; animation-delay: 1.1s; }
+
+    .dash-insight {
+      background: var(--cool-gray);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      opacity: 0;
+      animation: rise-in 0.6s ease forwards;
+      animation-delay: 1.15s;
+    }
+
+    .dash-insight-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .dash-insight p {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    /* Features */
+    .section-features {
+      padding: 80px 40px;
+      background: #fff;
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: clamp(40px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      margin-bottom: 48px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      border-top: 3px solid var(--accent);
+      padding: 28px;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 16px 40px rgba(14, 126, 168, 0.08);
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* How it works */
+    .section-how {
+      padding: 80px 40px;
+      background: var(--tint-blue);
+    }
+
+    .steps {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0;
+      position: relative;
+      margin-top: 8px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .steps::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 12%;
+      right: 12%;
+      height: 0;
+      border-top: 2px dashed var(--accent);
+      opacity: 0.45;
+      z-index: 0;
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 8px;
+    }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .step p {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.45;
+      max-width: 160px;
+      margin: 0 auto;
+    }
+
+    /* Built by */
+    .section-built {
+      padding: 80px 40px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .section-built h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .section-built .bio {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .section-built a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .section-built a:hover {
+      color: #0c6f94;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      padding: 32px 40px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top a.demo-link {
+      color: var(--mid-blue);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-top a.demo-link:hover {
+      color: #fff;
+    }
+
+    .footer-copy {
+      max-width: 1200px;
+      margin: 20px auto 0;
+      font-size: 13px;
+      color: var(--footer-muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left {
+        max-width: none;
+        padding: 40px 24px 32px;
+      }
+
+      .hero-right {
+        padding: 32px 24px 48px;
+        min-height: 380px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .nav-inner {
+        padding: 0 20px;
+      }
+
+      .section-features,
+      .section-how,
+      .section-built {
+        padding: 56px 24px;
+      }
+
+      .footer {
+        padding: 28px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo" aria-label="Signal home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 14V10" stroke="#7EC8E3" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M9 14V6" stroke="#7EC8E3" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M15 14V2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">Signal.</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="https://signal-v2-ochre.vercel.app" target="_blank" rel="noopener noreferrer">Demo</a>
+        <a class="btn-nav" href="https://signal-v2-ochre.vercel.app" target="_blank" rel="noopener noreferrer">Try Demo →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="hero-left">
+        <div class="eyebrow-pill">Talent analytics · Built for recruiting teams</div>
+        <h1 class="hero-title">Drop a report. Get the story.</h1>
+        <p class="hero-sub">
+          Signal is an AI-powered talent analytics tool. Upload any recruiting report and Signal reads it, visualizes it, and tells the story behind the data.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://signal-v2-ochre.vercel.app" target="_blank" rel="noopener noreferrer">Try Live Demo →</a>
+          <a class="btn btn-outline" href="#features">Learn More →</a>
+        </div>
+        <div class="stat-pills" role="list">
+          <span class="stat-pill" role="listitem">Any file format</span>
+          <span class="stat-pill" role="listitem">AI-powered insights</span>
+          <span class="stat-pill" role="listitem">Recruiter-built</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="dash-wrap">
+          <div class="dash-card">
+            <div class="dash-header">
+              <div class="mini-logo">
+                <span class="mini-logo-mark" aria-hidden="true">
+                  <svg width="14" height="10" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 14V10" stroke="#7EC8E3" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M9 14V6" stroke="#7EC8E3" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M15 14V2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                Signal.
+              </div>
+              <span class="dash-title">Pipeline Report — Q2 2025</span>
+            </div>
+            <div class="dash-body">
+              <div class="dash-stats">
+                <div class="dash-stat">
+                  <div class="dash-stat-label">Scheduled</div>
+                  <div class="dash-stat-value">12</div>
+                </div>
+                <div class="dash-stat dash-stat--accent">
+                  <div class="dash-stat-label">Pending</div>
+                  <div class="dash-stat-value">4</div>
+                </div>
+                <div class="dash-stat">
+                  <div class="dash-stat-label">Awaiting</div>
+                  <div class="dash-stat-value">2</div>
+                </div>
+              </div>
+              <div class="dash-chart" aria-hidden="true">
+                <div class="dash-bar"></div>
+                <div class="dash-bar"></div>
+                <div class="dash-bar"></div>
+                <div class="dash-bar"></div>
+                <div class="dash-bar"></div>
+              </div>
+              <div class="dash-insight">
+                <div class="dash-insight-label">AI Insight</div>
+                <p>Interview volume is up 18% vs. last quarter—most of the lift is in engineering, where time-to-schedule dropped by 2 days.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-features" id="features">
+      <div class="section-inner">
+        <p class="eyebrow">What Signal does</p>
+        <h2 class="section-title">Upload anything. Understand everything.</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Smart File Reading</h3>
+            <p>Drop in any CSV, Excel, or text report from your ATS or recruiting tool. Signal handles the rest.</p>
+          </article>
+          <article class="feature-card">
+            <h3>AI-Powered Visualization</h3>
+            <p>Signal reads your data and instantly generates charts, breakdowns, and pipeline views.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Plain English Insights</h3>
+            <p>No more staring at spreadsheets. Signal tells you what the data actually means in plain language.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-how" id="how">
+      <div class="section-inner">
+        <p class="eyebrow">How it works</p>
+        <h2 class="section-title">From file to insight. In seconds.</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <p>Upload your report</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <p>Signal reads the data</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <p>Visualizations appear</p>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <p>AI tells the story</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-built">
+      <h2>Built by Ari Benezra</h2>
+      <p class="bio">A decade in talent. I built the analytics tool I always wished existed.</p>
+      <a href="https://www.linkedin.com/in/aribenezra347/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <a href="#" class="logo logo--footer" aria-label="Signal home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 14V10" stroke="#7EC8E3" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M9 14V6" stroke="#7EC8E3" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M15 14V2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">Signal.</span>
+      </a>
+      <a class="demo-link" href="https://signal-v2-ochre.vercel.app" target="_blank" rel="noopener noreferrer">View Demo</a>
+    </div>
+    <p class="footer-copy">© 2026 Signal. All rights reserved.</p>
+  </footer>
+</body>
+</html>
