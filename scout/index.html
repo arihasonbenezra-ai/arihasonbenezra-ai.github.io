@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scout — AI Hiring Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #FFFFFF;
+      --dark: #1E3A6E;
+      --accent: #3A6FD4;
+      --tint: #EBF2FD;
+      --mid: #7EB3F5;
+      --cool-gray: #F0F4FA;
+      --text: #1A2233;
+      --muted: #6B7A99;
+      --border: #D0D8E8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .display {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* Logo */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--dark);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-mark svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .logo--footer .logo-text {
+      color: #fff;
+    }
+
+    .logo--footer .logo-mark {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(126, 179, 245, 0.4);
+    }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a:not(.btn-nav) {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:not(.btn-nav):hover {
+      color: var(--text);
+    }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      background: var(--accent);
+      color: #fff !important;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-nav:hover {
+      background: #2d62c9;
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: min(640px, calc(100vh - 73px));
+      align-items: stretch;
+    }
+
+    .hero-left {
+      padding: 56px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 600px;
+    }
+
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 6px 12px 6px 10px;
+      background: var(--tint);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--dark);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-size: 72px;
+      line-height: 1.02;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 32px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 22px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #2d62c9;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 22px;
+      background: transparent;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: var(--tint);
+    }
+
+    .stat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .stat-pill {
+      padding: 8px 14px;
+      background: var(--tint);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .hero-right {
+      background: var(--cool-gray);
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-float {
+      width: 100%;
+      max-width: 420px;
+      animation: floatY 4s ease-in-out infinite;
+    }
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .chat-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 48px rgba(30, 58, 110, 0.09), 0 8px 16px rgba(26, 34, 51, 0.04);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: var(--dark);
+      color: #fff;
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .chat-body {
+      padding: 20px 18px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 280px;
+    }
+
+    .msg {
+      max-width: 92%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.45;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: msgIn 0.45s ease forwards;
+    }
+
+    @keyframes msgIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .msg--user {
+      align-self: flex-end;
+      background: var(--tint);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .msg--scout {
+      align-self: flex-start;
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .msg--1 { animation-delay: 0ms; }
+    .msg--3 { animation-delay: 900ms; }
+
+    .scout-block {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: msgIn 0.45s ease forwards;
+      animation-delay: 300ms;
+      align-self: flex-start;
+      max-width: 92%;
+    }
+
+    .typing-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 16px;
+      background: var(--dark);
+      border-radius: 12px;
+      width: fit-content;
+      margin-bottom: 8px;
+      max-height: 48px;
+      overflow: hidden;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mid);
+      animation: bounce 1.2s ease-in-out infinite;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    .scout-reply {
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.45;
+      background: var(--dark);
+      color: #fff;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: scoutReplyIn 0.45s ease 0.62s forwards;
+    }
+
+    @keyframes scoutReplyIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .typing-fade {
+      animation: typingOut 0.3s ease 0.58s forwards;
+    }
+
+    @keyframes typingOut {
+      to {
+        opacity: 0;
+        max-height: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 40px;
+      background: #fff;
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .eyebrow-green {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .features h2 {
+      font-size: 52px;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      border-top: 3px solid var(--accent);
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 16px 40px rgba(30, 58, 110, 0.09);
+      transform: translateY(-2px);
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* How it works */
+    .how {
+      padding: 80px 40px;
+      background: var(--cool-gray);
+    }
+
+    .how h2 {
+      font-size: 52px;
+      line-height: 1.05;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .step p {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* Built by */
+    .built {
+      padding: 80px 40px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .built h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .built p {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 420px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .built a {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 14px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .built a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      padding: 32px 40px 28px;
+    }
+
+    .footer-top {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(208, 216, 232, 0.25);
+    }
+
+    .footer-top a {
+      color: var(--mid);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer-top a:hover {
+      color: #9ec8f8;
+    }
+
+    .footer-copy {
+      max-width: 1120px;
+      margin: 20px auto 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-left {
+        max-width: none;
+        padding: 48px 32px 32px;
+      }
+      .hero-right {
+        padding: 24px 32px 56px;
+      }
+      .hero h1 {
+        font-size: clamp(48px, 12vw, 72px);
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-inner {
+        padding: 14px 20px;
+      }
+      .nav-links {
+        gap: 14px;
+      }
+      .nav-links a:not(.btn-nav) {
+        display: none;
+      }
+      .hero-left,
+      .features,
+      .how,
+      .built {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .features h2,
+      .how h2 {
+        font-size: 40px;
+      }
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo" aria-label="Scout home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M8 10h8M8 14h5" stroke="#7EB3F5" stroke-width="1.75" stroke-linecap="round"/>
+            <path d="M7.5 5.5h9A3.5 3.5 0 0 1 20 9v5.5a2 2 0 0 1-2 2h-2.5L12 20l-1.5-3.5H7.5a2 2 0 0 1-2-2V9a3.5 3.5 0 0 1 3.5-3.5Z" stroke="#7EB3F5" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">Scout.</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="https://scout-chat.vercel.app" target="_blank" rel="noopener noreferrer">Demo</a>
+        <a class="btn-nav" href="https://scout-chat.vercel.app" target="_blank" rel="noopener noreferrer">Try Demo →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="hero-left">
+        <div class="eyebrow-pill">
+          <span class="dot" aria-hidden="true"></span>
+          AI HIRING ASSISTANT · BUILT FOR TALENT TEAMS
+        </div>
+        <h1 class="display">Ask anything. Hire better.</h1>
+        <p class="hero-sub">
+          Scout is a conversational AI hiring assistant built for recruiting teams. FAQ bot, interview trainer, and hiring coach — all in one.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="https://scout-chat.vercel.app" target="_blank" rel="noopener noreferrer">Try Live Demo →</a>
+          <a class="btn-outline" href="#features">Learn More →</a>
+        </div>
+        <div class="stat-pills">
+          <span class="stat-pill">3 interview modes</span>
+          <span class="stat-pill">Instant answers</span>
+          <span class="stat-pill">Recruiter-built</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="chat-float">
+          <div class="chat-card">
+            <div class="chat-header">Scout. · AI Hiring Assistant</div>
+            <div class="chat-body">
+              <div class="msg msg--user msg--1">
+                What should I expect in a technical interview?
+              </div>
+              <div class="scout-block">
+                <div class="typing-row typing-fade" aria-hidden="true">
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                </div>
+                <div class="scout-reply">
+                  Great question! Technical interviews typically include coding exercises, system design discussion, and behavioral questions tailored to the role.
+                </div>
+              </div>
+              <div class="msg msg--user msg--3">
+                Can you run a mock interview with me?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="section-inner">
+        <p class="eyebrow-green">WHAT SCOUT DOES</p>
+        <h2 class="display">Three ways to prepare. One assistant.</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>FAQ Bot</h3>
+            <p>Instant answers to candidate questions about the role, process, and company.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Interview Trainer</h3>
+            <p>Practice Q&amp;A, STAR coaching, and full mock interviews on demand.</p>
+          </article>
+          <article class="feature-card">
+            <h3>STAR Coaching</h3>
+            <p>Get structured feedback on your answers using the Situation, Task, Action, Result framework. Build stronger responses for any interview question.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="how">
+      <div class="section-inner">
+        <h2 class="display">Start a conversation. Get results.</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <p>Choose your mode</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <p>Select a role</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <p>Start the conversation</p>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <p>Get instant coaching</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="built">
+      <h2>Built by Ari Benezra</h2>
+      <p>A decade in talent. I built the assistant I always wished existed.</p>
+      <a href="https://www.linkedin.com/in/aribenezra347/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <a href="#" class="logo logo--footer" aria-label="Scout home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 10h8M8 14h5" stroke="#7EB3F5" stroke-width="1.75" stroke-linecap="round"/>
+            <path d="M7.5 5.5h9A3.5 3.5 0 0 1 20 9v5.5a2 2 0 0 1-2 2h-2.5L12 20l-1.5-3.5H7.5a2 2 0 0 1-2-2V9a3.5 3.5 0 0 1 3.5-3.5Z" stroke="#7EB3F5" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">Scout.</span>
+      </a>
+      <a href="https://scout-chat.vercel.app" target="_blank" rel="noopener noreferrer">View Demo</a>
+    </div>
+    <p class="footer-copy">© <span id="y"></span> Scout. All rights reserved.</p>
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
