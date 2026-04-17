@@ -251,6 +251,24 @@ footer{
   .about-stats{grid-template-columns:1fr 1fr;gap:14px}
   .stat-num{font-size:22px}
 }
+
+.company-bar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.company-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: #F0EDE8;
+  letter-spacing: 0.04em;
+}
+.company-dot {
+  color: #2A2020;
+  font-size: 24px;
+}
 </style>
 </head>
 <body>
@@ -362,36 +380,12 @@ footer{
 <section id="experience" class="exp-section">
   <div class="container">
     <div class="eyebrow">Experience</div>
-    <h2 class="section-title">WHERE I'VE BEEN.</h2>
-    <div class="exp-list">
-      <div class="exp-item">
-        <div class="exp-date">May 2023 — Present</div>
-        <div>
-          <div class="exp-role">Lead Tech TA Partner &amp; Talent AI SME</div>
-          <div class="exp-company">Warner Music Group</div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">July 2021 — Jan 2023</div>
-        <div>
-          <div class="exp-role">Global Talent Acquisition and Operations</div>
-          <div class="exp-company">Spotify</div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">June 2019 — July 2021</div>
-        <div>
-          <div class="exp-role">Technical Recruiter &amp; Talent Operations</div>
-          <div class="exp-company">Zocdoc</div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">2006 — 2019</div>
-        <div>
-          <div class="exp-role">Software Engineer · Automation Engineer · Talent Ops</div>
-          <div class="exp-company">NYC startups &amp; software companies</div>
-        </div>
-      </div>
+    <div class="company-bar">
+      <span class="company-name" style="opacity:0.9">Warner Music Group</span>
+      <span class="company-dot">·</span>
+      <span class="company-name" style="opacity:0.7">Spotify</span>
+      <span class="company-dot">·</span>
+      <span class="company-name" style="opacity:0.5">Zocdoc</span>
     </div>
   </div>
 </section>
