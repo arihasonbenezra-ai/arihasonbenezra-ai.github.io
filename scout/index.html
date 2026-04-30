@@ -156,17 +156,19 @@
     /* Hero */
     .hero {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(auto, 580px) minmax(auto, 620px);
+      gap: 48px;
+      justify-content: center;
       min-height: min(560px, calc(100vh - 73px));
-      align-items: stretch;
+      align-items: center;
+      padding: 0 32px;
     }
 
     .hero-left {
-      padding: 56px 40px;
+      padding: 56px 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-width: 600px;
     }
 
     .eyebrow-pill {
@@ -266,8 +268,7 @@
     }
 
     .hero-right {
-      background: var(--cool-gray);
-      padding: 40px 24px;
+      padding: 40px 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -275,7 +276,7 @@
 
     .chat-float {
       width: 100%;
-      max-width: 580px;
+      max-width: 620px;
       animation: floatY 4s ease-in-out infinite;
     }
 
