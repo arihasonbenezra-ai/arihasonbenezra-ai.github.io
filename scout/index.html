@@ -451,21 +451,20 @@
     }
 
     .feature-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      border-top: 3px solid var(--accent);
-      transition: box-shadow 0.25s, transform 0.2s;
+      background: var(--tint);
+      border: 1px solid transparent;
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: background 0.2s, transform 0.2s;
     }
 
     .feature-card:hover {
-      box-shadow: 0 16px 40px rgba(30, 58, 110, 0.09);
+      background: #F8DDD3;
       transform: translateY(-2px);
     }
 
     .feature-card h3 {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 12px;
@@ -473,8 +472,8 @@
 
     .feature-card p {
       font-size: 14px;
-      color: var(--muted);
-      line-height: 1.55;
+      color: var(--text);
+      line-height: 1.6;
     }
 
     /* How it works */
