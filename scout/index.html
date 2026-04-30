@@ -60,14 +60,16 @@
     .logo-mark svg {
       width: 85px;
       height: 85px;
-      animation: ezzyBreathe 3s ease-in-out infinite;
+      animation: ezzyBreathe 2s ease-in-out infinite;
     }
     .ezzy-avatar svg {
-      animation: ezzyBreathe 3s ease-in-out infinite;
+      animation: ezzyBreathe 2s ease-in-out infinite;
     }
     @keyframes ezzyBreathe {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(0.96); }
+      0%, 100% { transform: scale(1) rotate(-2deg); }
+      25% { transform: scale(1.08) rotate(2deg); }
+      50% { transform: scale(1) rotate(-2deg); }
+      75% { transform: scale(1.08) rotate(2deg); }
     }
     /* Floating big Ezzy in hero */
     .ezzy-big {
@@ -654,7 +656,7 @@
   <header class="nav">
     <div class="nav-inner">
       <a href="#" class="logo" aria-label="Ezzy home">
-        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#F26B5E"/><circle cx="11" cy="14" r="1.8" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></circle><path d="M 9.2 14 Q 11 12.5 12.8 14" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></path><circle cx="21" cy="15" r="1.8" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></circle><path d="M 19.2 15 Q 21 13.5 22.8 15" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></path><path d="M 12.5 21 Q 16 23.8 19.5 21" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" opacity="1"><animate attributeName="opacity" values="1;1;1;0.3;0.3;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></path></svg></span>
+        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#F26B5E"/><circle cx="11" cy="14" r="1.8" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></circle><path d="M 9.2 14 Q 11 12.5 12.8 14" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></path><circle cx="21" cy="15" r="1.8" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></circle><path d="M 19.2 15 Q 21 13.5 22.8 15" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></path><path d="M 12.5 21 Q 16 23.8 19.5 21" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" opacity="1"><animate attributeName="opacity" values="1;1;1;0.3;0.3;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></path></svg></span>
         <span class="logo-text">Ezzy.</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -695,7 +697,7 @@
               <div class="msg msg--user msg--1">
                 Can you run a mock interview for a Product Manager role?
               </div>
-              <div class="msg-row"><span class="ezzy-avatar" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="#F26B5E"/><circle cx="11" cy="14" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></circle><path d="M 9.4 14 Q 11 12.7 12.6 14" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></path><circle cx="21" cy="15" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></circle><path d="M 19.4 15 Q 21 13.7 22.6 15" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></path><path d="M 12.5 21 Q 16 23.5 19.5 21" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity="1"><animate attributeName="opacity" values="1;1;1;0.3;0.3;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="2.5s" repeatCount="indefinite"/></path></svg></span><div class="scout-block">
+              <div class="msg-row"><span class="ezzy-avatar" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="#F26B5E"/><circle cx="11" cy="14" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></circle><path d="M 9.4 14 Q 11 12.7 12.6 14" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></path><circle cx="21" cy="15" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></circle><path d="M 19.4 15 Q 21 13.7 22.6 15" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></path><path d="M 12.5 21 Q 16 23.5 19.5 21" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity="1"><animate attributeName="opacity" values="1;1;1;0.3;0.3;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="1.8s" repeatCount="indefinite"/></path></svg></span><div class="scout-block">
                 <div class="typing-row typing-fade" aria-hidden="true">
                   <span class="typing-dot"></span>
                   <span class="typing-dot"></span>
