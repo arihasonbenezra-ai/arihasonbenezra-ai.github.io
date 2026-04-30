@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scout — AI Hiring Assistant</title>
+  <title>Ezzy. Your AI Interview Coach.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg-page: #FFFFFF;
-      --dark: #1E3A6E;
-      --accent: #3A6FD4;
-      --tint: #EBF2FD;
-      --mid: #7EB3F5;
-      --cool-gray: #F0F4FA;
-      --text: #1A2233;
-      --muted: #6B7A99;
-      --border: #D0D8E8;
+      --dark: #000000;
+      --accent: #F26B5E;
+      --tint: #FCEAE6;
+      --mid: #F5C4B3;
+      --cool-gray: #FFFFFF;
+      --text: #000000;
+      --muted: #666666;
+      --border: #E5E5E5;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -628,14 +628,14 @@
 <body>
   <header class="nav">
     <div class="nav-inner">
-      <a href="#" class="logo" aria-label="Scout home">
+      <a href="#" class="logo" aria-label="Ezzy home">
         <span class="logo-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M8 10h8M8 14h5" stroke="#7EB3F5" stroke-width="1.75" stroke-linecap="round"/>
             <path d="M7.5 5.5h9A3.5 3.5 0 0 1 20 9v5.5a2 2 0 0 1-2 2h-2.5L12 20l-1.5-3.5H7.5a2 2 0 0 1-2-2V9a3.5 3.5 0 0 1 3.5-3.5Z" stroke="#7EB3F5" stroke-width="1.75" stroke-linejoin="round"/>
           </svg>
         </span>
-        <span class="logo-text">Scout.</span>
+        <span class="logo-text">Ezzy.</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#about">About</a>
@@ -650,29 +650,29 @@
       <div class="hero-left">
         <div class="eyebrow-pill">
           <span class="dot" aria-hidden="true"></span>
-          AI HIRING ASSISTANT · BUILT FOR TALENT TEAMS
+          AI INTERVIEW COACH · BUILT FOR CANDIDATES
         </div>
-        <h1 class="display">Ask anything. Hire better.</h1>
+        <h1 class="display">Practice. Polish. Land the role.</h1>
         <p class="hero-sub">
-          Scout is a conversational AI hiring assistant built for recruiting teams. FAQ bot, interview trainer, and hiring coach — all in one.
+          Ezzy is your AI interview coach. Practice questions, structure your answers, run full mock interviews, and get tailored feedback on your resume. Built by a recruiter who has seen what real prep looks like.
         </p>
         <div class="hero-ctas">
           <a class="btn-primary" href="https://scout-chat.vercel.app" target="_blank" rel="noopener noreferrer">Try Live Demo →</a>
           <a class="btn-outline" href="#features">Learn More →</a>
         </div>
         <div class="stat-pills">
-          <span class="stat-pill">3 interview modes</span>
-          <span class="stat-pill">Instant answers</span>
+          <span class="stat-pill">4 prep modes</span>
+          <span class="stat-pill">Real-time feedback</span>
           <span class="stat-pill">Recruiter-built</span>
         </div>
       </div>
       <div class="hero-right">
         <div class="chat-float">
           <div class="chat-card">
-            <div class="chat-header">Scout. · AI Hiring Assistant</div>
+            <div class="chat-header"><span class="ezzy-mini" aria-hidden="true"><svg viewBox="0 0 32 32" width="20" height="20"><circle cx="16" cy="16" r="13" fill="#F26B5E"/><circle cx="11" cy="14" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></circle><circle cx="21" cy="15" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></circle><path d="M 13 21 Q 16 23.5 19 21" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round"/></svg></span>Ezzy. · AI Interview Coach</div>
             <div class="chat-body">
               <div class="msg msg--user msg--1">
-                What should I expect in a technical interview?
+                Can you run a mock interview for a Product Manager role?
               </div>
               <div class="scout-block">
                 <div class="typing-row typing-fade" aria-hidden="true">
@@ -681,11 +681,11 @@
                   <span class="typing-dot"></span>
                 </div>
                 <div class="scout-reply">
-                  Great question! Technical interviews typically include coding exercises, system design discussion, and behavioral questions tailored to the role.
+                  Absolutely. I will play the hiring manager. We will start with introductions, then move into product sense, execution, and behavioral questions. Ready when you are.
                 </div>
               </div>
               <div class="msg msg--user msg--3">
-                Can you run a mock interview with me?
+                Yes, let's go.
               </div>
             </div>
           </div>
@@ -695,20 +695,24 @@
 
     <section class="features" id="features">
       <div class="section-inner">
-        <p class="eyebrow-green">WHAT SCOUT DOES</p>
-        <h2 class="display">Three ways to prepare. One assistant.</h2>
+        <p class="eyebrow-green">WHAT EZZY DOES</p>
+        <h2 class="display">Four ways to prep. One coach.</h2>
         <div class="feature-grid">
           <article class="feature-card">
-            <h3>FAQ Bot</h3>
-            <p>Instant answers to candidate questions about the role, process, and company.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Interview Trainer</h3>
-            <p>Practice Q&amp;A, STAR coaching, and full mock interviews on demand.</p>
+            <h3>Practice Q&amp;A</h3>
+            <p>Answer real interview questions, one at a time. Get structured feedback on every response. Build readiness through reps.</p>
           </article>
           <article class="feature-card">
             <h3>STAR Coaching</h3>
-            <p>Get structured feedback on your answers using the Situation, Task, Action, Result framework. Build stronger responses for any interview question.</p>
+            <p>Structure behavioral answers using Situation, Task, Action, Result. Ezzy flags what is strong, what is missing, and how to sharpen it.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Mock Interview</h3>
+            <p>Run a full simulated interview tailored to your target role. End with a debrief, top strengths, areas to improve, and a readiness rating.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Resume Feedback</h3>
+            <p>Paste your resume and target job description. Get the top five highest-impact changes ranked by impact, with quoted lines and suggested rewrites. Download the feedback as a PDF.</p>
           </article>
         </div>
       </div>
@@ -720,15 +724,15 @@
         <div class="steps">
           <div class="step">
             <div class="step-num">1</div>
-            <p>Choose your mode</p>
+            <p>Pick your role</p>
           </div>
           <div class="step">
             <div class="step-num">2</div>
-            <p>Select a role</p>
+            <p>Choose your prep mode</p>
           </div>
           <div class="step">
             <div class="step-num">3</div>
-            <p>Start the conversation</p>
+            <p>Start the session</p>
           </div>
           <div class="step">
             <div class="step-num">4</div>
@@ -740,14 +744,14 @@
 
     <section class="built">
       <h2>Built by Ari Benezra</h2>
-      <p>A decade in talent. I built the assistant I always wished existed.</p>
+      <p>A decade in talent. I built the coach I always wished existed.</p>
       <a href="https://www.linkedin.com/in/aribenezra347/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
     </section>
   </main>
 
   <footer class="footer">
     <div class="footer-top">
-      <a href="#" class="logo logo--footer" aria-label="Scout home">
+      <a href="#" class="logo logo--footer" aria-label="Ezzy home">
         <span class="logo-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 10h8M8 14h5" stroke="#7EB3F5" stroke-width="1.75" stroke-linecap="round"/>
@@ -758,7 +762,7 @@
       </a>
       <a href="https://scout-chat.vercel.app" target="_blank" rel="noopener noreferrer">View Demo</a>
     </div>
-    <p class="footer-copy">© <span id="y"></span> Scout. All rights reserved.</p>
+    <p class="footer-copy">© <span id="y"></span> Ezzy. All rights reserved.</p>
   </footer>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
