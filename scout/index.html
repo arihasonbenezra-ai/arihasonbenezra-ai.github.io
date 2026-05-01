@@ -319,7 +319,7 @@
       line-height: 1.45;
       opacity: 0;
       transform: translateY(8px);
-      animation: msgIn 0.45s ease forwards;
+      animation: msgIn 14s ease infinite;
     }
 
     @keyframes msgIn {
@@ -348,8 +348,8 @@
     .scout-block {
       opacity: 0;
       transform: translateY(8px);
-      animation: msgIn 0.45s ease forwards;
-      animation-delay: 300ms;
+      animation: msgIn 14s ease infinite;
+      animation-delay: -11.5s;
       align-self: flex-start;
       max-width: 92%;
     }
@@ -392,7 +392,7 @@
       color: #000000;
       opacity: 0;
       transform: translateY(6px);
-      animation: scoutReplyIn 0.45s ease 0.62s forwards;
+      animation: scoutReplyIn 14s ease infinite; animation-delay: -11s;
     }
 
     @keyframes scoutReplyIn {
@@ -403,7 +403,7 @@
     }
 
     .typing-fade {
-      animation: typingOut 0.3s ease 0.58s forwards;
+      animation: typingOut 14s ease infinite; animation-delay: -11.5s;
     }
 
     @keyframes typingOut {
@@ -663,6 +663,23 @@
     }
     .scout-row .scout-block {
       flex: 1;
+    }
+
+    /* Loop overrides */
+    @keyframes msgIn {
+      0%, 6% { opacity: 0; transform: translateY(8px); }
+      9%, 86% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(8px); }
+    }
+    @keyframes scoutReplyIn {
+      0%, 18% { opacity: 0; transform: translateY(6px); }
+      22%, 86% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(6px); }
+    }
+    @keyframes typingOut {
+      0%, 8% { opacity: 0; max-height: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
+      12%, 18% { opacity: 1; max-height: 48px; margin-bottom: 8px; padding-top: 12px; padding-bottom: 12px; }
+      22%, 100% { opacity: 0; max-height: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
     }
   </style>
 </head>
