@@ -331,9 +331,9 @@
 
     .msg--user {
       align-self: flex-end;
-      background: var(--tint);
-      color: var(--text);
-      border: 1px solid var(--border);
+      background: #000000;
+      color: #FFFFFF;
+      border: 1px solid #000000;
     }
 
     .msg--scout {
@@ -388,8 +388,8 @@
       border-radius: 12px;
       font-size: 13px;
       line-height: 1.45;
-      background: var(--dark);
-      color: #fff;
+      background: #FCEAE6;
+      color: #000000;
       opacity: 0;
       transform: translateY(6px);
       animation: scoutReplyIn 0.45s ease 0.62s forwards;
@@ -641,6 +641,29 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ezzy-header-face {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+    }
+    .scout-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .ezzy-e-monogram {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .scout-row .scout-block {
+      flex: 1;
+    }
   </style>
 </head>
 <body>
@@ -683,12 +706,12 @@
         
         <div class="chat-float">
           <div class="chat-card">
-            <div class="chat-header">Ezzy. · AI Interview Coach</div>
+            <div class="chat-header"><span class="ezzy-header-face" aria-hidden="true"><svg viewBox="0 0 32 32" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="#F26B5E"/><circle cx="11" cy="14" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></circle><path d="M 9.4 14 Q 11 12.7 12.6 14" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path><circle cx="21" cy="15" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></circle><path d="M 19.4 15 Q 21 13.7 22.6 15" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path><path d="M 12.5 21 Q 16 23.5 19.5 21" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity="1"><animate attributeName="opacity" values="1;1;1;0.3;0.3;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path></svg></span>Ezzy. · AI Interview Coach</div>
             <div class="chat-body">
               <div class="msg msg--user msg--1">
                 Can you run a mock interview for a Product Manager role?
               </div>
-              <div class="msg-row"><span class="ezzy-avatar" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="#F26B5E"/><circle cx="11" cy="14" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></circle><path d="M 9.4 14 Q 11 12.7 12.6 14" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path><circle cx="21" cy="15" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></circle><path d="M 19.4 15 Q 21 13.7 22.6 15" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path><path d="M 12.5 21 Q 16 23.5 19.5 21" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity="1"><animate attributeName="opacity" values="1;1;1;0.3;0.3;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path></svg></span><div class="scout-block">
+              <div class="msg-row"><span class="ezzy-avatar" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="#F26B5E"/><circle cx="11" cy="14" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></circle><path d="M 9.4 14 Q 11 12.7 12.6 14" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path><circle cx="21" cy="15" r="1.6" fill="#000"><animate attributeName="opacity" values="1;1;1;0;0;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></circle><path d="M 19.4 15 Q 21 13.7 22.6 15" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path><path d="M 12.5 21 Q 16 23.5 19.5 21" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity="1"><animate attributeName="opacity" values="1;1;1;0.3;0.3;1;1" keyTimes="0;0.7;0.78;0.82;0.86;0.92;1" dur="4s" repeatCount="indefinite"/></path></svg></span><div class="scout-row"><span class="ezzy-e-monogram" aria-hidden="true"><svg viewBox="0 0 32 32" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" fill="#FCEAE6"/><text x="16" y="22" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#000">E</text></svg></span><div class="scout-block">
                 <div class="typing-row typing-fade" aria-hidden="true">
                   <span class="typing-dot"></span>
                   <span class="typing-dot"></span>
